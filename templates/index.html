@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Upload and Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Upload Your CSV File</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Choose a CSV file:</label>
+        <input type="file" name="file" accept=".csv" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Prediction Results</h2>
+    <!-- {% if tables %}
+    <div>
+        <h3>Predicted Data</h3>
+        {{ tables|safe }}
+    </div> -->
+
+    {% if download_link %}
+    <div>
+        <a href="{{ url_for('download_file', filename=download_link) }}" download>
+            <button>Download Processed Data</button>
+        </a>
+    </div>
+    {% endif %}
+    {% endif %}
+</body>
+
+</html>

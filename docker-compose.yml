@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    container_name: flask_ml_app
+    ports:
+      - "5000:5000"
+    deploy:
+      resources:
+        limits:
+          cpus: "4"      # Allocates 4 CPU cores
+          memory: "4g"     # Allocates 4GB of RAM
+    environment:
+      - FLASK_ENV=production
+    restart: always
